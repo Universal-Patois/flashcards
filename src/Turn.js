@@ -1,7 +1,11 @@
+const Card = require("./Card");
+const data = require("./data");
+const prototypeQuestions = data.prototypeData;
+
 class Turn {
   constructor(userGuess, currentCard) {
     this.guess = userGuess;
-    this.card = currentCard;
+    this.card = currentCard || new Card();
   }
 
   returnGuess() {
@@ -13,19 +17,14 @@ class Turn {
   }
 
   evaluateGuess() {
-
-    if (this.guess === this.card.correctAnswer) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.guess === this.card.correctAnswer;
   }
 
   giveFeedback() {
-    if (this.guess !== this.card.correctAnswer) {
-      return "Incorrect!";
+    if (!this.evaluateGuess()) {
+      return "incorrect!";
     } else {
-      return "Correct!";
+      return "correct!";
     }
   }
 }

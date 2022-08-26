@@ -5,14 +5,13 @@ const Card = require("../src/Card");
 const Turn = require("../src/Turn");
 
 describe("Turn", () => {
-  it("should be a funtion", () => {
-    const turn = new Turn();
+  it("should be a function", () => {
     expect(Turn).to.be.a("function");
   });
 
   it("should contain the users guess to the question", () => {
-    const turn1 = new Turn("capybara");
-    expect(turn1.guess).to.equal("capybara");
+    const turn = new Turn("capybara");
+    expect(turn.guess).to.equal("capybara");
   });
 
   it("should contain current card in play", () => {
@@ -23,7 +22,7 @@ describe("Turn", () => {
       "blue"
     );
     const turn = new Turn("green", card);
-    expect(turn.card).to.equal(card);
+    expect(turn.card).to.deep.equal(card);
   });
 
   it("should return the users guess", () => {
